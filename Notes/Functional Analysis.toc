@@ -1,0 +1,23 @@
+\contentsline {section}{\numberline {1}Preliminaries}{1}
+\contentsline {section}{\numberline {2}Geometry of Hilbert Space}{2}
+\contentsline {subsection}{\numberline {2.1}Riesz lemma}{2}
+\contentsline {paragraph}{Examples}{3}
+\contentsline {subsection}{\numberline {2.2}Orthonormal basis}{6}
+\contentsline {section}{\numberline {3}Banach Spaces}{6}
+\contentsline {subsection}{\numberline {3.1}Hahn-Banach theorem}{6}
+\contentsline {paragraph}{Example}{7}
+\contentsline {paragraph}{Non-example}{7}
+\contentsline {paragraph}{Example}{8}
+\contentsline {paragraph}{Example}{8}
+\contentsline {paragraph}{Non-example}{8}
+\contentsline {subsection}{\numberline {3.2}Consequences of Baire category theorem}{10}
+\contentsline {paragraph}{Example}{12}
+\contentsline {paragraph}{Example}{12}
+\contentsline {subparagraph}{Step 1}{12}
+\contentsline {subparagraph}{Step 2}{12}
+\contentsline {subparagraph}{Step 3}{12}
+\contentsline {section}{\numberline {4}Spectral Theory}{13}
+\contentsline {paragraph}{Example}{13}
+\contentsline {subsection}{\numberline {4.1}Compact operators}{17}
+\contentsline {paragraph}{Example}{17}
+\contentsline {paragraph}{Example}{17}

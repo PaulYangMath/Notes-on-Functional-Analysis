@@ -9,8 +9,7 @@
 %\usepackage{epsfig}
 %\usepackage{graphicx}
 %\usepackage[dvips]{graphicx}
-\usepackage{tikz}
-\usepackage{tikz-cd}
+
 
 
 
@@ -664,10 +663,34 @@ Let $A$ be a bounded self-adjoint linear operator on $\shH$. Then there is a uni
 \end{enumerate}
 Moreover, if $\psi$ is an eigenvector, then $\what{\phi}(f) \psi = f(\lambda) \psi$. If $f \ge 0$, then $\what{\phi}(f) \ge 0$. If $BA = AB$, then $\what{\phi}(f) B = B \what{\phi}(f)$. 
 
+\subsection{Compact operators}
 
+\begin{definition}
+Let $X, Y$ be Banach spaces. $T \in \shL(X, Y)$ is compact if $T$ maps bounded sets in $X$ to precompact sets in $Y$. Equivalently, $T$ is compact if and only if for every bounded sequence $\{ x_n \}$, the image $\{ Tx_n \}$ has a convergent subsequence. 
+\end{definition}
+
+\paragraph{Example} Let $K(x, y) \in C[0, 1]^2$. The operator $K \in \shL(C[0, 1])$ defined by
+$$ K \phi(x) = \int_0^1 K(x, y) \phi(y) dy $$ 
+is a compact operator. The key is to show that the image of each $\{ \phi \in C[0, 1] : \| \phi \| \le M\}$ is equicontinuous. Ascoli theorem says that the image has a convergent subsequence.  
+
+\paragraph{Example} A finite rank operator (i.e. an operator whose range is of finite dimension) is automatically compact. A bounded operator will send a bounded set to a bounded set, but a bounded set in a finite dimensional space is automatically precompact by Heine-Borel. 
+
+\begin{theorem}
+A compact operator maps weakly convergent sequences onto norm convergent sequences. 
+\end{theorem}
 \begin{proof}
-
+The intuition, I think, is that weak convergence and convergence in norm coincides in finite dimensional spaces. Compact operators are not far from finite rank operators. We need to show that a compact operator maps a weakly convergent sequence to a weakly convergent sequence. Let $x_n \to_w x$ and $Tx_n = y_n$, $Tx = y$. Let $ l \in Y^*$, 
+$$ l(y_n) - l(y) = (T' l)(x_n - x) $$ 
+Note that $T' l \in X^*$, by definition of weak convergence, $y_n \to_w y$. Now suppose that $y_n$ does not converge to $y$ in norm. Then we can find a sequence $y_{n_k}$ such that $\|  y_{n_k} - y \| \ge \sm$. This subsequence will contain a subsequence that converges in norm to some point other than $y$, so that the sequence $y_n$ contains subsequences that converge weakly to different points, contradiction. 
 \end{proof}
+
+\begin{theorem}
+Let $\shH$ be a separable Hilbert space, then a compact operator $T$ is the norm limit of a sequence of finite rank operators. 
+\end{theorem}
+
+
+
+
 
 
 \end{document}
