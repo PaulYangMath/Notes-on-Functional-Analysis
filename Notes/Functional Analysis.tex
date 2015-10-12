@@ -1,0 +1,673 @@
+\documentclass[12pt]{article}
+\usepackage{amsmath}
+\usepackage{enumerate}
+\usepackage{mathrsfs} 
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{latexsym} 
+%\usepackage{epsfig}
+%\usepackage{graphicx}
+%\usepackage[dvips]{graphicx}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+
+
+
+\usepackage[matrix,tips,graph,curve]{xy}
+
+\newcommand{\mnote}[1]{${}^*$\marginpar{\footnotesize ${}^*$#1}}
+\linespread{1.065}
+
+\makeatletter
+
+\setlength\@tempdima  {5.5in}
+\addtolength\@tempdima {-\textwidth}
+\addtolength\hoffset{-0.5\@tempdima}
+\setlength{\textwidth}{5.5in}
+\setlength{\textheight}{8.75in}
+\addtolength\voffset{-0.625in}
+
+\makeatother
+
+\makeatletter 
+\@addtoreset{equation}{section}
+\makeatother
+
+
+\renewcommand{\theequation}{\thesection.\arabic{equation}}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{corollary}[equation]{Corollary}
+\newtheorem{conjecture}[equation]{Conjecture}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{proposition}[equation]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{definitions}[equation]{Definitions}
+%\theoremstyle{remark}
+
+\newtheorem{remark}[equation]{Remark}
+\newtheorem{remarks}[equation]{Remarks}
+\newtheorem{exercise}[equation]{Exercise}
+\newtheorem{example}[equation]{Example}
+\newtheorem{examples}[equation]{Examples}
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{question}[equation]{Question}
+\newtheorem{assumption}[equation]{Assumption}
+\newtheorem*{claim}{Claim}
+\newtheorem{answer}[equation]{Answer}
+
+\newtheoremstyle{named}{}{}{\itshape}{}{\bfseries}{.}{.5em}{\thmnote{#3's }#1}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+%%%%%% letters %%%%
+
+\newcommand{\fa}{\mathfrak{a}}
+\newcommand{\fb}{\mathfrak{b}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\fp}{\mathfrak{p}}
+\newcommand{\fq}{\mathfrak{q}}
+
+\newcommand{\IA}{\mathbb{A}}
+\newcommand{\IN}{\mathbb{N}}
+\newcommand{\IF}{\mathbb{F}}
+\newcommand{\IP}{\mathbb{P}}
+\newcommand{\IZ}{\mathbb{Z}}
+
+\newcommand{\sD}{\mathcal{D}}
+\newcommand{\sI}{\mathcal{I}}
+\newcommand{\sL}{\mathcal{L}}
+\newcommand{\sO}{\mathcal{O}}
+\newcommand{\sP}{\mathcal{P}}
+\newcommand{\sQ}{\mathcal{Q}}
+\newcommand{\sT}{\mathcal{T}}
+\newcommand{\sU}{\mathcal{U}}
+
+\newcommand{\shB}{\mathscr{B}}
+\newcommand{\shF}{\mathscr{F}}
+\newcommand{\shG}{\mathscr{G}}
+\newcommand{\shH}{\mathscr{H}}
+\newcommand{\shL}{\mathscr{L}}
+%%%%%%% macros %%%%%
+
+%% my definitions %%%
+
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Aut}{\mathrm{Aut}}
+\newcommand{\Trace}{\mathrm{Trace}\,}
+\newcommand{\rank}{\mathrm{rank}}
+\renewcommand{\deg}{\mathrm{deg}\,}
+\newcommand{\Spec}{\rm Spec\,}
+\newcommand{\Proj}{\rm Proj\,}
+\newcommand{\Sym}{\mathrm{Sym \,}}
+\newcommand{\Span}{\mathrm{Span \,}}
+\renewcommand\dim{{\rm dim\,}}
+\newcommand{\codim}{{\rm codim\,}}
+\renewcommand\det{{\rm det\,}}
+\newcommand{\im}{{\rm Im\,}}
+\newcommand{\Ran}{{\rm Ran \,}}
+
+
+\newcommand\iso{{\, \simeq \,}} 
+\newcommand\tensor{{\otimes}}
+\newcommand\Tensor{{\bigotimes}} 
+\newcommand\union{\bigcup} 
+\newcommand\onehalf{\frac{1}{2}}
+\newcommand\trivial{{\mathbb I}}
+\newcommand\wb{\overline}
+
+%%%%%Delimiters%%%%
+
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+
+%\renewcommand{\(}{\left(}
+%\renewcommand{\)}{\right)}
+
+
+%%%% Different kind of derivatives %%%%%
+
+\newcommand{\delbar}{\bar{\partial}}
+\newcommand{\pdu}{\frac{\partial}{\partial u}}
+%\newcommand{\pd}[1][2]{\frac{\partial #1}{\partial #2}}
+
+%%%%% Arrows %%%%%
+\newcommand{\induce}{\rightsquigarrow}
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\onto}{\twoheadrightarrow}
+\newcommand{\tto}{\longmapsto}
+\def\llra{\longleftrightarrow}
+\def\wt{\widetilde}
+\def\wtilde{\widetilde}
+\def\what{\widehat}
+\def\bf{\textbf}
+\def\it{\textit}
+%%%%%%%%%%%%%%%%%%% Ziquan's definitions %%%%%%%%%%%%%%%%%%%%
+\newcommand{\Ann}{\mathrm{Ann}}
+\newcommand{\height}{\mathrm{height \,}}
+\newcommand{\Div}{\mathrm{Div}}
+\newcommand{\sE}{\mathcal{E}}
+\newcommand{\p}{\partial}
+\newcommand{\Ohm}{\Omega}
+\newcommand{\w}{\omega}
+\newcommand{\sing}{\mathrm{sing}}
+%%%%%%%%%%%%% new definitions for the positive mass paper %%%%%%%%%
+
+\newcommand{\calpha}{\overline{\alpha}}
+\newcommand{\cbeta}{\overline{\beta}}
+\newcommand{\st}{\, \mathrm{ s.t. }\,}
+\newcommand{\ew}{\textit{a.e.}\,}
+\newcommand{\sm}{\varepsilon}
+\newcommand{\lD}{\underline{D}}
+\newcommand{\IR}{\mathbb{R}}
+\newcommand{\IQ}{\mathbb{Q}}
+\newcommand{\IC}{\mathbb{C}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%
+\begin{document}
+%
+
+\title{Notes on Functional Analysis}
+\author{Ziquan Yang}
+
+
+\date{\today}
+
+\maketitle
+
+\tableofcontents 
+%\setcounter{secnumdepth}{1} 
+
+\setcounter{section}{0}
+
+
+\section{Preliminaries}
+In algebra, we know that if there is a group homomorphism $h : A \to B$, where $B$ is abelian, then $h$ will factor through the abelianization of $A$. B.L.T theorem says that if $T : \< V_1, \| \cdot \|_1 \> \to \< V_2, \| \cdot \|_2 \>$ is a bounded linear transformation where $V_2$ is complete, then $T$ will factor through the completion of $V_1$. 
+
+A main point in the philosophy of functional analysis is that in order to define something on a normed linear space, it is often convenient to define it on a dense set and extend it by B.L.T. For example, this idea can be used to define Riemann integral on $PC[a, b]$ very quickly. ($PC[a, b]$ is the set of piecewise continuous functions.) To extend the obvious integral functional on step functions. 
+
+Recall that Borel sets of $\IR$ is the smallest family of subsets of $\IR$ that is closed under complements and countable union, and contains the open intervals. 
+
+\begin{theorem}
+Let $f_n \ge 0$ be an increasing sequence of measurable functions and suppose $f_n \to f$ pointwise. Then 
+\end{theorem}
+
+A concise proof of Riesz-Fisher on $L^1$.   
+
+
+\section{Geometry of Hilbert Space}
+\subsection{Riesz lemma}
+A complex inner product space is a complex vector space $V$, together with a function $(\cdot, \cdot) : V \times V \to \IC$ such that 
+\begin{enumerate}
+\item $(x, x) \ge 0$ and $(x, x) = 0$ if and only if $x = 0$. 
+\item $(x, y + z) = (x, y) + (x, z)$. 
+\item $(x, \alpha y) = \alpha (x, y) $. 
+\item $(y, x ) = \overline{(x, y)}$. 
+\end{enumerate}
+A consequence of these definitions is that 
+$$ (\alpha x, y) = \overline{(y, \alpha x)} = \overline{\alpha(y, x)} = \calpha (x, y) $$
+We say $(\cdot, \cdot)$ is conjugate-linear in the first entry. 
+
+\begin{theorem}
+\emph{Pythagorean theorem}
+Let $\{ x_i \}_{i = 1}^N$ be an orthonormal set in an inner product space $V$. Then for any $x \in V$, 
+$$ \| x \|^2 = \sum_{i = 1}^N |(x, x_i)|^2 + \| x - \sum_{i = 1}^N (x, x_i)x_i \|^2 $$
+\end{theorem}
+\begin{proof}
+We may write 
+$$ x = \sum_{i = 1}^N (x, x_i)x_i + ( x  - \sum_{i = 1}^N (x, x_i)x_i ) $$
+We readily verify that 
+$$(\sum_{i = 1}^N (x, x_i)x_i), \, \, ( x  - \sum_{i = 1}^N (x, x_i)x_i ) $$
+are orthogonal. Therefore 
+$$(x, x) = \| \sum_{i = 1}^N (x, x_i)x_i \|^2 + \| x - \sum_{i = 1}^N (x, x_i)x_i \|^2 $$
+We can easily verify using induction that $$\| \sum_{i = 1}^N (x, x_i)x_i \|^2 = \sum_{i = 1}^N |(x, x_i)|^2 $$
+\end{proof}
+
+Of course, Pythagorean theorem is well known. Some of its corollaries are less obvious at first sight, especially in an infinite dimensional space. 
+\begin{corollary}
+\emph{(Bessel's inequality)}
+Same setting as before, 
+$$  \| x \|^2 \ge \sum_{i = 1}^N |(x, x_i)|^2 $$ 
+\end{corollary}
+
+
+\begin{corollary}
+\emph{(Schwarz inequality)}
+For any $x, y$ in an inner product space $V$, 
+$$ |(x, y)| \le \| x \| \| y \| $$ 
+\end{corollary}
+
+Another useful geometric inequality is parallelogram law:
+$$\| x + y \|^2 + \| x - y \|^2 = 2 \|x \|^2 + 2 \|y \|^2 $$
+If we draw a parallelogram, then the law is saying that the sum of squares of the diagonals equal to that of the four edges. 
+
+\begin{definition}
+A \textit{Hilbert space} is a complete inner product space. 
+\end{definition}
+
+\paragraph{Examples} $\sL^2[a, b]$ the square-integrable functions with inner product $(f, g) = \int \overline{f} g $. $\ell^2$ the square summable sequences with inner product $((a_i), (b_i)) = \sum \overline{a}_i b_i$. A \textit{closed} subspace of a Hilbert space is a Hilbert space with the natural inner product. 
+
+\begin{lemma}
+Let $\shH$ be a Hilbert space, $M$ be a closed subspace. Then for each $x \in \shH$, there exists a unique $z \in M$, such that $\| x - z \|$ is smallest. 
+\end{lemma}
+\begin{proof}
+Set 
+$$ d = \inf_{y \in M} \| x - y \| $$
+We want to find a $z$ such that $\| x - z \| = d$. Take a sequence $\{ y_n \}$ in $M$ such that $\| x - y_n \| \to d$ as $n \to \infty$. Now we show that the sequence is Cauchy:
+\begin{align*}
+\| y_n - y_m \|^2 &= \| ( y_n - x) - (y_m  - x) \|^2\\
+&= 2 \| y_n - x \|^2 + 2 \| y_m - x \|^2 - \| (y_n - x) + (y_m - x) \|^2 \\
+\end{align*}
+The above equation is given by parallelogram law. 
+Note that 
+\begin{align*}
+\| (y_n - x) + (y_m - x) \|^2  &= \| y_n + y_m - 2x \|^2 \\
+&= 4 \| x - (y_n + y_m)/2 \|^2 \\
+&\ge 4d^2
+\end{align*}
+Therefore 
+$$ \| y_n - y_m \|^2 \le 2 \| y_n - x \|^2 + 2 \| y_m - x \|^2 - 4d^2 $$
+RHS clearly converges to zero as $n, m \to \infty$. Therefore $\{y_n\}$ converges and we can take $z$ to be this limit.  
+\end{proof}
+
+\begin{remark}
+The above lemma is rather intuitive if the vector space is finite dimensional. It reassures us that the minimum distance of a subspace to a point is actually achieved, except we need to make sure the subspace is closed. Of course, in the finite dimensional case, any subspace is closed. But for infinite dimensions it is possible, say, to have a dense proper subspace. For example, consider $C[a, b] \subseteq \sL^1[a, b]$. 
+\end{remark}
+
+Now denote the set of bounded linear transformations from $\shH$ to $\shH'$ by $\shL(\shH, \shH')$. It is a normed linear space with the usual supreme norm:
+$$ \| T \| = \sup_{\|x \|_\shH = 1} \| T x \|_{\shH'} $$
+
+Consider the special case when $\shH' = \IC$. $\shL(\shH, \IC)$ is called the \textit{dual space} of $\shH$ and is denoted $\shH^*$. The elements of $\shH^*$ are called continuous linear functionals. 
+
+For each $x \in \shH$ we associate $T_x \in \shH'$ given by $T_x(y) = (x, y)$. $T_x$ is bounded and in fact $\| T_x \| = \| x \|$ since $(x, y) \le \| x \| \|y \|$ is always true and $(x, x) = \| x \| \| x \|$. We will show that these are the only elements that we have. In other words, \textit{Hilbert spaces are self-dual.}
+
+\begin{lemma}
+\emph{(Riesz lemma)}
+\label{Riesz}
+For each $T \in \shH^*$, there is a unique element $y_T \in \shH$ such that $T(x) = (y_T, x)$ for all $x \in \shH$. In addition, $\| T \| = \| y_T \|$. 
+\end{lemma} 
+\begin{proof}
+Let $N = \ker T$. It is a closed subspace since $T$ is continuous and $N = T^{-1}(0)$. Therefore $\shH = N \oplus N^\perp$. Find a nonzero $x_0 \in N^\perp$, if $N \neq \shH$. 
+$y_T$ should satisfy
+\begin{align*}
+(y_T, x_0) &= T(x_0) \\
+(y_T, x) &= 0, \forall x \in N
+\end{align*}
+Set 
+$$ y_T = \frac{\overline{T(x_0)}}{\| x_0 \|^2} x_0 $$
+This element clearly satisfy the previous two conditions. This suffices, since for each $y$, we can write
+$$ y = (y - \frac{T(y)}{T(x_0)} x_0) +  \frac{T(y)}{T(x_0)} x_0 $$
+Uniqueness: The association $\shH \to \shH^*$ is injective. 
+\end{proof}
+A sesquilinear form $B(\cdot, \cdot) : \shH \times \shH \to \IC$ is linear in the second component and conjugate linear in the first, and is bounded in the sense that there is some $C$ such that $|B(x, y)| \le C \| x\| \| y \|$. 
+\begin{corollary}
+For each sesquilinear form $B(\cdot, \cdot) : \shH \times \shH \to \IC$, there exists a unique bounded linear transformation $A$ such that $B(x, y) = (Ax, y)$. 
+\end{corollary}
+\begin{proof}
+For each $x$, then $T_x(y) = B(x, y)$ is a bounded linear functional. Find $\wt{x}$ such that $T_x = (\wt{x}, \cdot) $. Define $A$ by $Ax = \wt{x}$. 
+\end{proof}
+
+Now we want to extend the idea of basis set for Hilbert spaces. If $S$ is orthonormal such that no other orthonormal set contains $S$ as a proper subset, then we call it an orthonormal basis for $\shH$. 
+
+By Zorn's lemma, every Hilbert space $\shH$ has an orthonormal basis. 
+\begin{theorem}
+If $S = \{ x_n \}$ is a basis, then for all $y \in \shH$, 
+$$ y = \sum_{x_n \in S} (x_n, y) x_n $$
+and $\| y \|^2 \ge \sum | (x_n, y)|^2$. Conversely, if $\sum | c_n |^2 < \infty$, $c_n \in \IC$, then $\sum c_n x_n$ converges in $\shH$. 
+\end{theorem} 
+We will see soon that there are only countably many $x_n$ such that $(x_n, y) \neq 0$. Therefore the sum in the theorem makes sense. 
+
+If $(x_n, y) \neq 0$ for a countable subset of $S$, then let $y_n = \sum_{j = 1}^n (x_j, y)x_j$. We see that 
+$$ \| y_m - y_n \| = \sum_{j = n}^m |(x_j, y)|^2 $$
+converges to $0$. Hence $y_n$ is a Cauchy sequence. (finish the proof)
+
+Gram-Schmidt orthogonalization: if the set of vectors is countable we have a constructive proof. 
+
+\subsection{Orthonormal basis}
+Last time
+$$ u \sum_{v_i \in S} (v_i, u)v_i$$
+A natural question is to ask how many of such $v_i$ we need. 
+\begin{definition}
+A metric space which has a countable dense subset is said to be \textit{separable}.
+\end{definition}
+\begin{theorem}
+$\shH$ is separable if and only if it has a countable orthonormal basis. 
+\end{theorem}
+If $S$ contains a finite number of elements, then the Hilbert space is isomorphic as a vector space to $\IC^N$, $N = |S|$. If it has countably infinite elements, then $\shH \iso \ell^2$. 
+\begin{proof}
+Let $S = \{ v_i \}$ be a basis. For each $u \in \shH$, we expand it to 
+$$ u = \sum_{i} (v_i, u) v_i $$
+Let $X =\{ \sum_j c_j v_j : v_j \in \IQ[i] \}$. Then $X$ is dense and countable in $\shH$. 
+Conversely, suppose $X \subseteq \{ u_i \}$ is dense countable set. $X$ has to span $\shH$. Otherwise suppose there is some nonzero $w \perp \Span X$. We can find a sequence $u_i \to w$. Then $(w, u_i) \to (w, w)$. But each $(w, u_i) = 0$, so $(w, w) = 0$, contradiction. We apply Gram-Schmidt to $X$ to obtain an orthonormal subset, which must be a basis. 
+\end{proof}
+A basis $\{v_i\}$ gives an isomorphism $\shH \iso \ell^2$. Define $T : \shH \to \ell^2$ by $T(u) = \{ (v_i, u) \}$. Bessel's inequality says that $\{ (v_i, u) \} \in \ell^2$. 
+
+Let $\shH = L^2[0, 1]$ with norm defined by 
+$$ (f, g) = \int_0^1 \overline{f(x)} g(x) dx $$
+It is easily checked that $\{v_n = e^{2 \pi n i x}\}$ is an orthonormal basis. 
+
+It is not the case to study separable Hilbert spaces it suffices to study $\ell^2$ space since the basis itself has additional structures. 
+
+
+\section{Banach Spaces}
+\subsection{Hahn-Banach theorem}
+Recall that a complete complex normed linear space is called a \textit{Banach} space. 
+
+\paragraph{Example} $\sL^\infty(\IR), C_b(\IR)$
+\paragraph{Non-example} $\kappa(\IR) = \{\textit{continuous functions with compact support} \}$, but its completion (is it true?) $C_\infty(\IR) = \{ \textit{continuous functions that vanish at infinity} \}$ is a Banach space. 
+
+\begin{theorem}
+$\shL(X, Y)$ is a Banach space with operator norm if $Y$ is complete. 
+\end{theorem}
+\begin{proof}
+If $A, B$ are two operators, then 
+$$\| (A + B) x \| = \| A x + B x \| \le \| A x \|_Y + \| B x \|_Y \le \| A \| \|x\| + \| B \| \|x \| $$
+Now let $\{ A_n \}$ be a Cauchy sequence, i.e. $\| A_n - A_m \| \to 0$. Let $x \in X$ be a point. Consider the sequence $\{ A_n(x) \}$. $\| A_n x - A_m x \| \le \| A_n - A_m \| \| x \| \to 0$, so it is a Cauchy sequence. Since $Y$ is complete, for every $x$ we can define $A = \lim A_n x$. We want to show that $A \in \shL(X, Y)$. Linearity of $A$ is clear. We only need to verify that $A$ is bounded. 
+$$ \| A x \|_Y = \lim_{n \to \infty} \| A x \|_Y \le \limsup_{n \to \infty} \| A_n \| \| x \| $$
+$$ \frac{\|(A - A_n)(x)\|}{\| x \|} \le \frac{\| \lim_{m \to \infty} A_m x - A_n x \|}{\| x \|_X} \le \lim_{m \to \infty} \| A_m - A_n \| = 0 $$
+\end{proof}
+\begin{definition}
+A bounded linear operator from a normed linear space $X$ to another normed linear space $Y$ is called an \textit{isomorphism} if it is a bijection which is continuous and has a continuous inverse. If it also norm preserving, then it is called an isometric isomorphism. 
+\end{definition}
+We can define different norms to the same space. Consider $\IC^N$, we can have 
+\begin{align*}
+\| (x_1, \cdots, x_n ) \|_2 &= (\sum_{i = 1}^n |x_i|^2)^{1/2} 
+\\ \| (x_1, \cdots, x_n ) \|_1 &= \sum_{i = 1}^n |x_i| \\ \| (x_1, \cdots, x_n) \|_\infty &= \max_{1 \le i \le n} |x_i| 
+\end{align*} 
+In principle different norms should give different Banach spaces, but we want to identify norms that induce the same metric topology on the underlying space. In orhter words, two norms are equivalent if and only if the identity map on the underlying space is an isomorphism. All norms on finite dimensional space $\IR^n, \IC^n$ are equivalent. 
+
+Recall that $\shL(X, \IC)$ is Banach since $\IC$ is complete. We denoted it by $X^*$. In fact, we call elements of $X^*$ bounded linear functionals. 
+
+\paragraph{Example} $(\sL^2(\IR))^* = \sL^2(\IR)$. In general $\shH^* = \shH$. 
+\paragraph{Example} Let $p, q > 1$ be conjugates, i.e. $1/p + 1/q = 1$. By Riesz representation theorem, we see that $(\sL^p(\IR))^* = \sL^q(\IR)$. Apply this twice we see that $(\sL^p(\IR))^{**} =\sL^p(\IR)$. In general, if $X^{**} = X$, then $X$ is called \textit{reflexive}. 
+
+\paragraph{Non-example} $(\sL^1(\IR))^* = \sL^\infty(\IR)$, but $\sL^1(\IR) \subset \sL^\infty(\IR)^{**}$. 
+
+Examples of sequence spaces\footnote{Lecture 5} $c_0 = \{ \{ a_n \} : a_n \to 0 \}$, $\ell^1 = \{ \{ a_n \} : \sum |a_n| < \infty \}$, $\ell^\infty = \{ \{ a_n \} : \sup a_n < \infty \}$. We also have $\ell^1 \subset C_0 \subset \ell^\infty$. $(c_0)^* = l^1$ and $(\ell^1)^* = l^\infty$. Hence $(c_0)^{**} = \ell^\infty \neq c_0$, so $c_0$ is not reflexive. 
+
+We show that $(\ell^1)^* = \ell^\infty$. For all $\lambda \in \ell^\infty$, we define 
+$$ T_\lambda a = \sum_{n = 1}^\infty \lambda_n a_n $$
+We can easily check that the sum converges. Conversely, given $T \in \shL(\ell^1, \IC)$, we need to find $\lambda \in l^\infty$, such that $T_\lambda = T$. Set $\lambda_k = T(e_k)$, we can recover the sequence $\lambda$. By construction $T_\lambda = T$, and $\| \lambda \|_\infty \le \| T \|$.
+
+\begin{theorem}
+Let $X$ be a Banach space. For each $x \in X$, we can define $\wt{x}(\cdot)$ a linear functional on $X^*$ by $\wt{x}(\lambda) = \lambda(x), \forall \lambda \in X^*$. Then the map $J : x \mapsto \wt{x}$ is an isometric isomorphism of $X$ onto a (possibly proper) subspace of $X^{**}$. 
+\end{theorem} 
+\begin{proof}
+$\| \wt{x} (\lambda) \| = \| \lambda(x) \| \le \| \lambda \|_{X^*} \| x \|$ Therefore $\| \wt{x} \|_{\shL(X^*, \IC)} \le \| x \|$ and $J : X \to X^{**}$ is continuous. To show that $J$ is isometric, we want to find $\lambda \in X^*$ such that $\| \wt{x}(\lambda) \| = \|\lambda \| \| x \|$. 
+\end{proof}
+ 
+\begin{theorem}
+\emph{(Hahn-Banach Theorem)}
+Let $X$ be a real vector space. $P : X \to \IR$ is a real valued function satisfying $P(\alpha x + (1 - \alpha) y) \le \alpha P(x) + (1 - \alpha) P(y)$, $|\alpha| \le 1$. Suppose $\lambda$ is a linear funcitonal defined on a subspace $Y \subseteq X$, which satisfies $\lambda(x) \le P(x)$. Then there exists a linear functional $\Lambda$ defined on $X$ such that $\Lambda(x) \le P(x)$ for all $x \in X$ and $\Lambda(x) = \lambda(x)$ for all $x \in Y$. 
+\end{theorem}
+\begin{proof}
+First consider extension by one vector $z \in X - Y$. Let $\wt{Y} = \mathrm{span} \{ Y, z \}$. We want to extend $\lambda$ to $\wt{\lambda} : Y \to \IR$. By linearity
+$$ \wt{\lambda}(a z + y) = a \wt{\lambda}(z) + \lambda(y) $$
+so it suffices to specify $\lambda(y)$. Additionally, we need it $\le P(az + y)$, i.e. 
+$$ \lambda(z) \le \frac{1}{a} (P(az + y) - \lambda(y))$$
+when $a > 0$, and the sign is reversed when $a < 0$. Therefore it suffices to choose $\lambda(z)$ such that 
+$$ \sup_{y \in Y, \alpha > 0} \frac{1}{\alpha}(-P(y - az) + \lambda(y)) \le \lambda(z) \le \inf_{y \in Y, \beta > 0}\frac{1}{\beta}(P(az + y) - \lambda(y))$$
+To show this is possible, it suffices to show that for aribitrary $y_1, y_2 \in Y, \alpha, \beta > 0$, 
+$$ \frac{1}{\alpha}(-P(y_1 - az) + \lambda(y)) \le \frac{1}{\beta}(P(az + y_2) - \lambda(y)) $$i.e. 
+$$ \beta \lambda(y_1) + \alpha \lambda(y_2) \le \beta P(y_1 - \alpha y_2) + \alpha P(y_2 + \beta z) $$
+This is true since 
+\begin{align*}
+\beta P(y_1  - \alpha z ) + \alpha P(y_2 + \beta z) & \ge (\alpha + \beta)(\frac{\beta}{\alpha + \beta} P(y_1 - \alpha z) + \frac{\alpha}{\alpha + \beta} P(y_2 + \beta z)) \\
+&\ge (\alpha + \beta)(P(\frac{\beta}{\alpha + \beta} (y_1 - \alpha z) +  \frac{\alpha}{\alpha + \beta} (y_2 + \beta z)) \\
+&= (\alpha + \beta)(P(\frac{\beta}{\alpha + \beta} y_1 +  \frac{\alpha}{\alpha + \beta} y_2) \\
+&\ge (\alpha + \beta)(\lambda(\frac{\beta}{\alpha + \beta} y_1 +  \frac{\alpha}{\alpha + \beta} y_2) \\
+&\ge \lambda(\beta y_1 + \alpha y_2) 
+\end{align*}
+
+
+Apply Zorn's lemma to complete the proof. 
+\end{proof}
+In the complex version, we replace the assumption on $P$ by 
+$$ P(\alpha x + \beta y) \le |\alpha | P(x) + |\beta| P(y), \forall x, y \in X, |\alpha|+| \beta| = 1$$ $\lambda(x) \le P(x)$ is replaced by $|\lambda(x)| \le P(x)$.
+\begin{proof}
+Note that $\lambda$ may be complex valued, but we wish to apply the real version. Let $l(x) = \mathrm{Re\,} \lambda(x)$. $l(x)$ extends to $L(x)$. $ \mathrm{Im\,} \lambda(x) = - \mathrm{Re\,} \lambda(ix)$. We have $\lambda(x) = l(x) - i l (i x)$, so we define $\Lambda(x) = L(x) - i L(i x )$. We can check that $\Lambda$ is the desired extension. 
+\end{proof}
+\begin{corollary}
+Let $X$ be a normed linear space and $Y$ a subspace. $\lambda \in Y^*$. Then there exists $\Lambda \in X^*$ such that $\Lambda(x) = \lambda(x), \forall x \in Y$ and $\| \Lambda \|_{X^*} = \|\lambda \|_{Y^*}$. 
+\end{corollary}
+As an example, since $c_0$ is a subspace of $\ell^\infty$, we have that $\ell^1 = c_0^* \subseteq \ell^\infty$. 
+
+Let $p(x) = \| \lambda \|_{Y^*} \| x \|, \forall x \in X$. Hahn-Banach says that we have an extension $\Lambda$, such that $|\Lambda(x)| \le p(x)$. Therefore we have inequality $\| \Lambda \|_{X^*} = \|\lambda \|_{Y^*}$. 
+
+If $y$ is an element of a normed linear space $X$, then there is a bounded linear functional $\Lambda \in X^*$ such that $\Lambda(y) = \| \Lambda \|_{X^*} \| y \|$. That is, any vector can be the element where $\Lambda$ achieves its supreme norm. 
+
+Hahn-Banach theorem roughly says that linear functionals serve as ``coordinates" of infinite dimensional linear space. 
+
+Let $Z$ be a subspace of $X$. Suppose there is a vector $y \in X - Z$ whose distance from subspace $Z$ is $d$. Then there exists $\Lambda \in X^{*}$ such that $\| \Lambda \| \le 1$ and $\Lambda(y) = d$, $Z \subseteq \ker \Lambda$. That is, we can find a linear functional that separates a subspace and a vector. For finite dimensional vector spaces, this of course is trivial, but Hahn-Banach handles the infinite dimensional case. 
+
+\begin{theorem}
+Let $X$ be a Banach space. If $X^*$ is separable, then $X$ is also separable. 
+\end{theorem}
+This gives another proof $\ell^1 \subset (\ell^\infty)^*$ since $\ell^1$ is separable. 
+
+\begin{proof}
+Let $\{ \lambda_n \}$ be a dense subseteq of $X^*$. Choose $\{ x_n \} \subset X$, such that 
+$ \| x_n \| = 1$ and 
+$$ | \lambda_n (x_n) \ge \frac{\| \lambda_n \|}{2} $$
+Let $D$ be the set of all finte linear combinations of $\{ x_n \}$ with rational coefficients. $D$ is countable by construction. We want to check that it is dense. Suppose not. Then we can find a vector $y \in X - D$ and $\lambda \in X^*$ such that $\lambda(y) \neq 0$, $\lambda(x) = 0, \forall x \in D$. However, this is impossible. Since $\{ \lambda_n \}$ is dense in $X^*$, we can find a subsequence convergent to $\lambda$. 
+\end{proof}
+
+\subsection{Consequences of Baire category theorem}
+
+\begin{theorem}
+A complete vector space is never a countable union of nowhere dense subsets. 
+\end{theorem}
+Usually the Baire category theorem is used as follows: if we can write a complete vector space $X$ as a union of closed subsets $\union S_n$, then at least one of them has nonempty interior. 
+
+(Principle of uniform boundedness)
+\begin{theorem}
+Let $X$ be a Banach space and suppose we have a family $\shF$ of bounded linear transformations $X \to Y$ for some normed linear space $Y$. Suppose for each $x \in X$, $\{ \| T x \|_Y : T \in \shF \}$ is bounded, then $\{ \| T \|_{\shL(X, Y)} : T \in \shF \}$ is also bounded. 
+\end{theorem}
+So how is Baire category theorem related to boundedness?
+\begin{lemma}
+Let $X, Y$ be two normed linear spaces and $T$ be a linear map $X \to Y$. $T$ is bounded if and only if $T^{-1}(\{ y \in Y : \|y \| \le 1 \})$ has a nonempty interior. 
+\end{lemma}
+\begin{proof}
+One way is easy: If $T$ is bounded, say by $M$, then $\{ x \in X : \| x \| \le 1/M \} \subseteq T^{-1}(\{ y \in Y : \|y \| \le 1 \})$. 
+
+Now assume that $T^{-1}(\{ y \in Y : \|y \| \le 1 \})$ has a nonempty interior, so we assume it contains a small ball $\{ x \in X: \| x - x_0 \| < \sm \}$. Then for all $x$ with $\| x'  \| < \sm$
+$$ \| Tx' \| = \| T(x' + x_0) - T(x_0) \| < \| T(x' + x_0) \| + \| T x_0 \| < 1 + \| T x_0 \|_Y $$ 
+This implies that the operator norm of $T$ is smaller than 
+$$ \frac{1 + \| T (x) \|}{\sm} $$
+\end{proof}
+
+
+\subsection*{Lecture 8}
+
+\begin{enumerate}
+\item Principle of uniform boundedness
+\item Open mapping theorem
+\item Inverse mapping theorem
+\item Closed graph theorem 
+\end{enumerate}
+
+\begin{theorem}
+\label{closedgraph}
+Let $X, Y$ be Banach spaces and $T : X \to Y$ be a linear map. $T$ is bounded if and only if $\Gamma(T) \subseteq X \oplus Y$ is closed. 
+\end{theorem}
+That $T$ is continuous means if $x_n \to x \in X$ as $n \to \infty$, $\{ T(x_n) \} \to y = T(x) \in Y$. That $\Gamma(T)$ is closed means that if $\< x_n, T(x_n) \> \to \< x, y \>$, then $y = T(x)$. One way is trivial: if $T$ is continuous, then its graph is clearly closed. To see the converse, we first note that $\Gamma(T)$ is a subspace of $X \oplus Y$. If it is closed, it is a Banach space. (We use Taxi-cab norm on $X \oplus Y$. Consider two maps $\pi_1, \pi_2$ that project $\Gamma(T)$ to $X, Y$ respectively. $\pi_1$ is bijective since $\Gamma(T)$ is a graph. By inverse mapping theorem, $\pi_1$ has a continuous inverse. (Open mapping theorem only holds for Banach spaces, so we need the assumption that $\Gamma(T)$ is closed.) Note that $T = \pi_2 \circ \pi_1^{-1}$, so $T$ is continuous. 
+
+We have seen the convergence of the operator norm. $T_n \to T$ if and only if $\| T_n - T \| \to 0$. A topology gives us a notion of convergence, and we call this topology ``norm topology". 
+
+Given a sequence of operators, we say that the sequence $\{ T_n \}$ converges \textit{strongly} to an operator $T$ denoted by $T_n \stackrel{s}{\to} T$ if for each $x \in X$, $\| T_n x - T x \| \to 0$. This is analogous to the concept of pointwise convergence. However, since $T_n$'s are linear, this condition is in fact quite strong. We say $\{ T_n \}$ converges weakly to $T$, denoted by $T_n \stackrel{s}{\to} T$, if $| L(T_n x) - L(Tx) | \to 0$ as $n \to \infty$, for each $x \in X, L \in Y^*$. 
+$T_n \to Y$ is stronger than $T_n \stackrel{s}{\to} T$, which is stronger than $T_n \stackrel{w}{\to} T$. 
+
+\paragraph{Example} Consider $\shL(\ell^2, \ell^2) = \shL(\ell^2)$. Let $S_n$ by $$( \xi_1, \xi_2, \cdots) \mapsto (0, 0, 0, \cdots, 0, \xi_{n + 1}, \xi_{n + 2}, \cdots)$$ For each $n$, $\| S_n \| = 1$, so $S_n$ does not converge to $0$. However, $S_n \stackrel{s}{\to} 0$. $S_n \xi \to 0$ since $\xi \in \ell^2$. 
+
+\paragraph{Example} Let $W_n$ is the ``shifting operator" given by $$(\xi_1, \xi_2, \cdots ) \mapsto (0, \cdots, 0, \xi_1, \xi_2, \cdots) $$ ($n$ zeroes are appended in the front.) $W_n \stackrel{w}{\to} 0$. For fixed $l \in (\ell)^*$, $\xi \in \ell^2$, $|l(W_n \xi) - l(0 \cdot \xi)| \to 0$. 
+
+\begin{theorem}
+Let $\{ T_n \} \subseteq \shL(\shH)$. Suppose that $(T_n x, y)$ converges as $n \to \infty$ for all $x, y \in \shH$. Then there exists $T \in \shL(\shH)$ such that $T_n \stackrel{w}{\to} T$. 
+\end{theorem}
+
+
+\subparagraph{Step 1} Prove $\forall x \in \shH$, $\| Tx \|$ is a uniformly bounded. For each $y \in \shH$, $(T_n x, y)$ converges, so that $$\sup_{n} |(T_n x, y)| < \infty$$ We can show $(T_n x, y) \in \shH^*$. This implies the operator norm is uniformly bounded. 
+
+\subparagraph{Step 2} $ \| T_n \|_{\shL(H)}$ is uniformly bounded. 
+
+\subparagraph{Step 3} Define $B(x, y) = \lim_{n \to infty} (T_n x, y) $. $B$ is sesquilinear and bounded. $|B(x, y)| = |\lim_{n \to \infty} (T_n x, y)| \le \sup  \| T_n \| \| x \| \| y \|$. By Riesz lemma, there exists $T \in \shL(\shH)$, $B(x, y) = (Tx, y)$.  
+
+
+If $T$ is linear, then its kernel and range are both vector spaces. The kernel is always closed, but the range may not be. 
+
+Let $X, Y$ be Banach spaces. $T \in \shL(X, Y)$. The Banach space adjoint of $T$, denoted by $T'$, is a bounded linear operator from $Y^*$ to $X^*$ defined by 
+$(T'l)(x) = l(Tx)$. 
+
+\section{Spectral Theory}
+\begin{definition}
+A complex number $\lambda$ is said to be in the resolvent set $\rho(T)$ if $\lambda I - T$ is a bijection with a bounded inverse. $\sigma(T) = \IC - \rho(T)$. 
+\end{definition}
+$\rho(T)$ is open. The resolvent $R_\lambda$ is analytic on $\rho(T)$ if $\lambda \ge \| T \|$, then $\lambda \in \rho(T)$. 
+
+\begin{definition}
+Let $r(T) = \sup_{\lambda \in \sigma(T)} |\lambda|$. $r(T)$ is called the spectral radius of $T$. $r(T) \le \| T \|$. 
+\end{definition}
+
+\begin{theorem}
+Let $T \in \shL(X)$. Then $$\lim_{n \to \infty} \sqrt[n]{\| T \|^n }$$ exists and equals $r(T)$. If $X$ is a Hilbert space, and $A$ is self-adjoint, then $r(A) = \| A \|$. 
+\end{theorem}
+\begin{proof}
+To compute $(\lambda I - T)^{-1}$, we can use Laurent series
+$$ \frac{1}{\lambda} \sum_{n = 0}^\infty \frac{1}{\lambda^n} T^n $$
+We want to know when the series converges. We know that $\| T^n \| \le \| T \|^n$. Hadamard theorem says that $r(T) = \sqrt[n]{\| T \|^n}$.
+
+If $A$ is self-adjoint on a Hilbert space, $\| A^* A \| = \| A \| \| A^* \| = \| A \|^2$. If we take $n = 2^k$, then we see that $\| A^n \| = \| A \|^n$ by replacing $A$ by $A^*$'s. Since the whole sequence converges, it has to converge to $A$. 
+\end{proof}
+
+\paragraph{Example} Let $T$ be the left-shift operator on $\ell_1$. We consider $T'$ on $\ell_\infty$. We have see that $\sigma(T) = \sigma(T') = \{ \lambda : |\lambda| \le 1 \}$. $\{ \lambda : |\lambda| < 1 \}$ is point spectrum of $T$ and residual spectrum of $T'$. 
+
+\begin{theorem}
+Let $X$ be a Banach space, $T \in \shL(X)$. Then $\sigma(T) = \sigma(T')$ and $R_\lambda(T') = R_\lambda(T)'$. If $\shH$ is a Hilbert space, then $\sigma(T^*) = \{ \lambda : \overline{\lambda} \in \sigma(T) \}$. 
+\end{theorem}
+\begin{proof}
+Recall that $T^*$ is characterized by $(T^* x, y) = (x, Ty)$. Inner product is conjugate linear in the first and linear in the second, so it makes sense that $\sigma(T^*) = \{ \lambda : \overline{\lambda} \in \sigma(T) \}$. 
+
+Suppose $\lambda \in \rho(T)$, $R_\lambda(T) \in \shL(X)$. $R_\lambda(T)' \in \shL(X^*)$ acts on $X^*$ by 
+$$ R_\lambda(T)'(l)(x) = l(R_\lambda(T)(x)) = l((\lambda I - T)^{-1} x) $$
+This is simply $(\lambda I - T')^{-1}$ acting on $l$. 
+\end{proof}
+
+Let us think about $|\lambda| = 1$ in the previous example. If there would by a nonzero element, $l \in \ell_\infty = (\ell_1)^*$, such that 
+$$ l(\lambda I - T)(x) = 0 , \forall x $$
+If the image of $\lambda I - T$ is dense, then the above is not possible. Otherwise, Hahn-Banach theorem says we can find such $l$. Then
+$$ (\lambda I - T')(l)(x) = 0 $$
+which implies that $(\lambda I - T')(l) = 0$. $l$ is an eigenvector and $\lambda$ is an eigenvalue, since $T' l = \lambda l$. We easily see that $T'$ does not have a point spectrum. Therefore $\Ran(\lambda I - T)$ is dense and $\lambda$ is not the residual spectrum. This gives us an example of $\lambda \in \sigma(T)$ but lies in neither point spectrum nor residual spectrum. 
+
+If $\lambda$ lies in the residual spectrum of $T$, then $\lambda$ lies in the point spectrum of $T'$. 
+
+We now show that $\{ \lambda : |\lambda| = 1 \}$ is the residual spectrum of $T'$. If $a, b \in \ell_\infty$, $a = (\lambda I - T') b = \lambda b - T' b$ and $a_0 = \lambda b_0$, $a_1 = \lambda b_1 - b_0, \cdots, a_n = \lambda b_n - b_{n - 1}$. We can easily solve for $b$ from $a$: $$b_n = (\overline{\lambda})^{n + 1} \sum_{m = 0}^n \lambda^m a_m$$ Let $c = (c_1, c_2, \cdots)$ where $c_n = \overline{\lambda}^n$. Suppose $d \in \ell_\infty$ and 
+$$ \| d - c \|_{\ell_\infty} \le \frac{1}{2} $$
+We get $\Re \{ \lambda^n d_n \} \ge \Re \{ \lambda^n c_n \} = \| d - c \|_{\ell_\infty} \ge 1/2$.  Thus if $(\lambda I - T') e = d$, $e_n = \overline{\lambda}^{n + 1} \sum_{m = 0}^n \lambda^m d_m$, $e_n \ge n/2$ then $e_n \not\in \ell_\infty$. $\Ran (\lambda I - T')$ does not contain the ball of radius of radius $1/2$ at $c$ and hence $\lambda$ is in the residual spectrum of $T'$. 
+Altough $T$ is injective, its inverse is not bounded. 
+
+\begin{theorem}
+Let $T$ be a self-adjoint operator on a Hilbert space $\shH$. Then $T$ has no residual spectrum, and $\sigma(T) \subseteq R$. Eigenvectors of distinct eigenvalues are orthogonal. 
+\end{theorem}
+\begin{proof}
+Consider $T - (\lambda + i \mu) I$. Expand the inner product $$\| (T - (\lambda + i \mu)) x \|^2 \le \< (T - (\lambda + i \mu)) x, (T - (\lambda + i \mu)) x \> = \| (T - \lambda) x \|^2 + \| \mu x \|^2  $$
+Note that 
+$$ \< - i \mu x, (T - \lambda) x \> = i \mu \< x, (T - \lambda) x \> $$
+and 
+$$ \< (T - \lambda) x, - i \mu x \>  = - i \< (T - \lambda)x, x \>$$
+so they cancell each other. We have shown that $(\lambda + i \mu) \in \rho(T)$ if $\mu \neq 0$. If $\lambda \in \IR$ in the residual spectrum of $T$, then $\lambda$ lies in the point spectrum of $T = T^*$, a contradiction. Therefore $\lambda$ does not have residual spectrum.
+\end{proof}
+
+
+\subsection*{Lecture hat}
+We can diagonalize a Hermitian $n \times n$ matrix $A$ using eigenvalues and eigenvectors $A \phi_i = \lambda \phi_i$. Let $\Phi = (\phi_1, \cdots, \phi_n)$, then $A \Phi = \Phi \Lambda$, or equivalently, $\Phi^* A \Phi = \Lambda$ where $\Lambda = \mathrm{diag}[\lambda_1, \cdots, \lambda_n]$. 
+
+We are going to study bounded self-adjoint operators, which are analogues of Hermitian matrices. We are going to estabilish that bounded self-adjoint operators look at ``diagonal operators". 
+
+Let $A$ be a bounded self-adjoint operator on a Hilbert space $\shH$. We can always find a measure space $(M, \mu)$ and a unitary operator $U : \shH \to L^2(M, d \mu)$ such that $(U A U^{-1} f)(x) = F(x) f(x)$ where $F(x)$ is some bounded measurable function on $(M, \mu)$. (Since $F$ is bounded, it is clearly in $L^2$.)
+
+Let $f$ be a continuous function. We want to define $f(A)$ ($f$ acting on operators). If $f = \sum_{n = 0}^N a_n x^n$, then we know how to do it. If $f$ is a power series with radius of convergence $R$, then we can similarly define 
+$$ f(A) = \sum_{n = 0}^\infty a_n A^n $$
+We can using dominated convergence to see that the sum converges. 
+
+(Continuous functional calculus)
+\begin{theorem}
+Let $A$ be a bounded self-adjoint operator on a Hilbert space $\shH$. There is a unique map $\phi : C(\sigma(A)) \to \shL(\shH)$, where $ C(\sigma(A))$ is the set of continuous functions on $A$, satisfying the following properties:
+\begin{enumerate}
+\item $\phi$ is an algebraic $*$-homomorphism. It means it preserves the polynomial relations between functions. E.g. $\phi(fg) = \phi(f) \circ \phi(g)$,  $\phi(\lambda f) = \lambda \phi(f)$, and $\phi(\overline{f}) = (\phi(f))^*$. 
+\item $\phi$ is continuous. $\| \phi(f) \|_{\shL(\shH)} \le C \| f \|_{C(\sigma(A))}$ for some constant $C$. 
+\item $\phi(x) = A$. (These three properties already uniquely determine the function $\phi$)
+\item If $A \psi = \lambda \psi, \phi(f) \psi = f(\lambda) \psi$. 
+\item $\sigma[\phi(f)] = \{ f(\lambda) : \lambda \in \sigma(A) \}$. 
+\item If $f \ge 0$, then $\phi(f) \ge 0$. (Recall what it means for an operator to be $\ge 0$.)
+\item $\| \phi(f) \|_{\shL(\shH)} = \| f \|_\infty $.
+\end{enumerate}
+\end{theorem}
+
+Suppose $A$ is a Hermitian matrix and $A = \Phi \Lambda \Phi^*$. Then $f(\Lambda) = \mathrm{diag}[f(\lambda_1), \cdots, f(\lambda_n)]$. Therefore the natural definition of $f(A)$ is $f(A) = \Phi f(\Lambda) \Phi^*$. If we assume $A \ge 0$ so that all its eigenvalues $\ge 0$, then we can canonically define $A = \Phi \sqrt{\Lambda} \Phi^*$. 
+
+We begin with two lemmas.
+\begin{lemma}
+Let $$P(x) = \sum_{n = 0}^N a_n x^n,  P(A) = \sum_{n = 0}^N a_n A^n $$. Then 
+$$ \sigma(P(A)) - \{ P(\lambda) : \lambda \in \sigma(A) \} $$
+\end{lemma}
+\begin{proof}
+Let $\lambda \in \sigma(A)$. Let us look at the polynomial $P(x) - P(\lambda)$. It certainly contains $\lambda$ as a root, so $P(x) - P(\lambda) = (x - \lambda) Q(x)$ where $Q$ is some other polynomial. Now 
+$$ P(A) - P(\lambda)I  = (A  - \lambda I) Q(A) = Q(A)(A - \lambda I)$$
+Assume $\mu \in \sigma(P(A))$, we let $\lambda_1, \cdots, \lambda_n$ be all the roots to $P(x) - \mu$. 
+$$ P(x) - \mu = a(x - \lambda_1) \cdots (x - \lambda_n) $$
+and hence 
+$$ P(A) - \mu = a(A - \lambda_1) \cdots (A - \lambda_n) $$
+Once of $\{ \lambda_i \}$ lies in $\sigma(A)$ and $\mu = P(\lambda_i)$. 
+\end{proof}
+
+\begin{lemma}
+Let $A$ be a bounded self-adjoint operator. Then 
+$$ \| P(A) \| = \sup_{\lambda \in \sigma(A)} | P(\lambda) |$$
+\end{lemma}
+\begin{proof}
+The proof uses the fact that $A$ is self-adjoint. It is not true if $A$ is not. $$\| P(A) \|^2 = \| P(A)^* P(A) \| = \| \overline{P}(A) P(A) \| = \| (\overline{P} P) (A) \| = \sup_{\lambda \in \overline{P}P(\sigma(A))} | \lambda | = \sup_{\mu \in \sigma(A)} |\overline{P}P(\mu)| = (\sup_{\mu \in \sigma(A)} |P(\mu)|)^2$$
+\end{proof}
+
+If $T(f) = \int f d\mu$, then $T \in C(\sigma(A))^*$. 
+Find $\psi$ $(\psi, f(A) \psi) : C(\sigma(A)) \to \IC$ by $\int_{\sigma(A)} f d\mu_A$. 
+
+\begin{definition}
+The measure $\mu_\psi$ is called the spetral measure assoicated with the vector $\psi$. 
+\end{definition}
+
+Using $\mu_\psi$ $g \in \shB(\IR)$ is some Borel function on $\IR$. Define $g(A)$ such that $\psi g(A) \psi = \int_{\sigma(A)} g(\lambda) \mu_\psi( d \lambda )$ 
+
+This defines $g(A)$ by polarization identity. 
+
+If these are true, then we have showed existence of $\phi$ on a dense subset. Our plan is to use BLT to extend the map.  
+
+
+Let $A$ be a bounded self-adjoint linear operator on $\shH$. Then there is a unique map $\what{\phi} : \shB(\IR) \to \shL(\shH)$ so that 
+\begin{enumerate}
+\item $\what{\phi}$ is algebraically $*$-homomorphism. 
+\item $\what{\phi}$ is norm continuous. 
+\item $\what{\phi}(x) = A$. 
+\item If we have sequence of functions $f_n \in \shB(\IR) \to f$ pointwise, then $ \what{\phi}(f_n) \to \what{\phi}(f) $ strongly. 
+\end{enumerate}
+Moreover, if $\psi$ is an eigenvector, then $\what{\phi}(f) \psi = f(\lambda) \psi$. If $f \ge 0$, then $\what{\phi}(f) \ge 0$. If $BA = AB$, then $\what{\phi}(f) B = B \what{\phi}(f)$. 
+
+
+\begin{proof}
+
+\end{proof}
+
+
+\end{document}
